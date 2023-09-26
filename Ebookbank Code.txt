@@ -1,0 +1,699 @@
+//Home page
+{% extends 'navigation.html' %}
+{% load static %}
+{% block body %}
+<div id="demo" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+    <li data-target="#demo" data-slide-to="3"></li>
+    <li data-target="#demo" data-slide-to="4"></li>
+    </ul>
+    <!-- The slideshow -->
+  <div class="carousel-inner" style="width:100%;height:550px">
+    <div class="carousel-item active">
+      <img src="{% static 'images/1b.jpg' %}" alt="Los Angeles" style="height:550px">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/7a.jpg' %}" alt="Chicago" style="height:550px">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/3a.jpg' %}" alt="New York" style="height:550px">
+    </div>
+<div class="carousel-item">
+      <img src="{% static 'images/4a.jpg' %}" alt="New York" style="height:550px">
+    </div>
+     <div class="carousel-item">
+      <img src="{% static 'images/5a.jpg' %}" alt="New York" style="height:550px">
+    </div>
+ <div class="carousel-item">
+      <img src="{% static 'images/6a.jpg' %}" alt="New York" style="height:550px">
+    </div>
+      </div>
+  </div>
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+{% block b %}
+{% endblock %}
+{% endblock %}
+// USER LOGIN PAGE
+{% extends 'navigation.html' %}
+{% block body %}
+{% load static %}
+{% if equal error "yes" %}
+<script>
+ alert('logged in successfully');
+    window.location=('{% url 'home' %}');
+</script>
+{% endifequal %}
+{% ifequal error "not" %}
+<script>
+    alert('Username & Password are not Matching');
+</script>
+{% endifequal %}
+<style>
+.mybtnone:hover{background-color : #E40203}
+</style>
+<div class="container">
+    <h2 style="margin-top:20px" align="center">User Login Form</h2><hr>
+<div class="container-fluid" style="width:70%;margin-top:10%">
+<form method="post" action="">
+    {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Username</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="uname" placeholder="Enter Username">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pwd">
+  </div>
+  <button type="submit" class="btn btn-primary mybtnone">Login</button>
+  <button class="btn btn-primary mybtnone"><a href="{% url 'signup' %}" style="color:white">Signup</a></button>
+</form>
+</div>
+</div>
+{% endblock %}
+// USER SIGNUP PAGE 
+{% extends 'navigation.html' %}
+{% block body %}
+{% load static %}
+<div class="container">
+    <h2 style="margin-top:20px" align="center">Registration Form</h2><hr>
+<div class="container-fluid" style="width:70%;margin-top:10%">
+<form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">First Name</label>
+      <input type="text" class="form-control" placeholder="Enter First Name" name="fname" id="inputEmail4">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Last Name</label>
+      <input type="text" class="form-control" name="lname" placeholder="Enter Last Name" id="inputPassword4">
+    </div>
+  </div>
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">User Name</label>
+      <input type="text" class="form-control" name="uname" placeholder="Enter User Name" id="inputEmail4">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" name="pwd" id="inputPassword4">
+    </div>
+  </div>
+        <div class="form-row">
+<div class="form-group col-md-6">
+    <label for="exampleInputEmail1">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Enter Email">
+  </div>
+<div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Contact</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Contact Detail" name="contact">
+  </div>
+        </div>
+        <div class="form-row">
+    <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">City</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter City" name="city">
+  </div>
+ <div class="form-group col-md-6">
+        <label for="exampleInputPassword1">Date of Birth</label>
+    <input type="date" class="form-control" id="exampleInputPassword1" name="date">
+  </div>
+        </div>
+    <div class="form-row">
+    <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Full Address</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Address Detail" name="add">
+  </div>
+<div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Image</label>
+    <input type="file" class="form-control" id="exampleInputPassword1" name="img" value="choose file">
+</div></div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+</div>
+{% if error %}
+<script>
+    alert('Regitered Successfully');
+    window.location = "{% url 'login' %}";
+</script>
+{% endif %}
+{% endblock %}
+// USER PROFILE PAGE
+{% extends 'navigation.html' %}
+{% load static %}
+{% block body %}
+<div class="container">
+    <h2 style="margin-top:20px" align="center">View Profile</h2><hr>
+<div  class="container-fluid" style="width:80%;margin-bottom:5%">
+    <hr><div class="row">
+        <div class="col-md-6">
+            <strong>Full Name:</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.user.first_name}} {{pro.user.last_name}}
+        </div>
+    </div><hr>
+     <div class="row">
+        <div class="col-md-6">
+            <strong>Customer Pic:</strong>
+        </div><div class="col-md-6">
+           <img src="{{pro.image.url}}" style="width:150px;height:150px">
+        </div></div><hr><div class="row">
+        <div class="col-md-6">
+            <strong>Email Id :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.user.email}}
+        </div>
+    </div><hr>
+     <div class="row">
+        <div class="col-md-6">
+            <strong>Contact :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.contact}}
+        </div>
+     </div><hr>
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Date of Birth :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.dob}}
+        </div>
+    </div><hr>
+     <div class="row">
+        <div class="col-md-6">
+            <strong>City :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.city}}
+        </div>
+     </div><hr><div class="row">
+        <div class="col-md-6">
+            <strong>Address :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.address}}
+        </div>
+    </div><hr>
+    <a href="{% url 'edit_profile' %}"><button class="btn btn-primary" style="width:100%;margin-bottom:5%">Edit Profile</button></a>
+</div>
+</div>
+{% endblock %}
+// VIEW ALL PRODUCT
+{% extends 'carousel.html' %}
+{% block b %}
+{% load static %}
+<linkrel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"  crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<style>
+.mybtnone:hover{background-color : #E40203}
+</style>
+<hr>
+{% for i in cat %}
+ <div class="container-fluid">
+   	<h1 class="text-center mt-5 mb-5">
+   	</h1>
+	 <h2 class= "pl-5" style ="color : #E40203 ; text-transform : uppercase">{{i.name}}</h2><hr>
+   	<div id="{{i.id}}" class="carousel slide" data-ride="carousel">
+   		<div class="carousel-inner row w-100 mx-auto">
+			{% for j in pro %}
+			{% if i.name == j.category.name %}
+			{% if forloop.counter in num %}
+<div class="carousel-item col-md-3 active"><div class="card">
+					<center><img class="card-img-top img-fluid" align="center" src="{{j.image.url}}" style="width:160px;height:170px;float:center" alt="card-img"></center>
+  <div class="card-body">
+   <hclass="card-title">{{j.name}} Rs.{{j.price}}</h4>
+   <p class="card-text">{{j.desc}}</p>
+  <form align="center" action="{% url 'add_cart' j.id %}" method="post">
+  {% csrf_token %}
+ <button type="submit" class="btn btn-primary mybtnone">Add to Cart</button>
+</form>
+  </div>
+   </div>
+   </div>
+   {% else 
+  <div class="carousel-item col-md-3">
+   <div class="card">
+   <center><img class="card-img-top img-fluid" align="center" src="{{j.image.url}}" style="width:160px;height:170px;float:center" alt="card-img"></center>
+   						<div class="card-body">
+   						<h4 class="card-title">{{j.name}} Rs.{{j.price}}</h4>
+   						<p class="card-text">{{j.desc}}</p>
+<form align="center" action="{% url 'add_cart' j.id %}" method="post">
+	{% csrf_token %}
+<button type="submit" class="btn btn-primary mybtnone">Add to Cart</button>
+</form>  </div>
+  </div>
+  </div>
+ {% endif %}
+ {% endif %}
+ {% endfor %}
+<a class="carousel-control-prev" href="#{{i.id}}" role="button" data-slide="prev">
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<span class="sr-only">Previous</span>
+</a>
+ <a class="carousel-control-next" href="#{{i.id}}" role="button" data-slide="next">
+<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span></a>
+		</div>
+	</div>
+ </div>
+ {% endfor %}
+<style>
+html{
+scroll-behavior:smooth;
+}
+/*scroll button start*/
+#scrollbtn
+{
+position:fixed;
+bottom:20px;
+right:40px;
+z-index:99;
+border:none;
+color:red;
+background:#00abff;
+padding:10px;
+border-radius:10px;
+}
+/*scroll button end*/
+</style>
+<div class="scrolltop float-right">
+  <i class="fa fa-arrow-up" onclick="topFunction()" id="scrollbtn"></i>
+  </div>
+<script>
+  scrollbutton = document.getElementById("scrollbtn"); 
+  window.onscroll = function(){scrollFunction()};
+  function scrollFunction()
+ {
+  if(document.body.scrollTop>20 || document.documentElement.scrollTop>20)
+  {
+  scrollbutton.style.display="block";
+  }
+  else
+  {
+  scrollbutton.style.display="none";
+  }
+  }
+  function topFunction()
+  {
+  document.body.scrollTop = 0;//safari
+  document.documentElement.scrollTop = 0;//for chrome
+  }
+</script>  
+     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ <script src="{% static 'js/jquery.js' %}"></script>
+{% endblock %}
+// CONFIRM BOOKING
+{% extends 'navigation.html' %}
+{% block body %}
+{% load static %}
+<div class="container">
+    <h2 style="margin-top:20px" align="center">Confirm Booking Detail</h2><hr>
+<div class="container-fluid" style="width:70%;margin-top:5%">
+<form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Booking Id</label>
+      <input type="text" class="form-control" name="book_id" value="{{book_id}}" id="inputEmail4" readonly>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Customer Name</label>
+      <input type="text" class="form-control" name="name" value="{{request.user.username}}" id="inputPassword4" readonly>
+    </div>
+  </div>
+    <div class="form-row">
+     <div class="form-group col-md-6">
+      <label for="inputEmail4">Booking Date</label>
+      <input type="text" class="form-control" name="date1" value="{{date1}}" id="inputEmail4" readonly>
+    </div>
+   <div class="form-group col-md-6">
+      <label for="inputPassword4">Email</label>
+      <input type="email" class="form-control" name="email" value="{{request.user.email}}" id="inputPassword4" readonly>
+    </div>
+  </div>
+        <div class="form-row">
+<div class="form-group col-md-6">
+    <label for="exampleInputEmail1">City</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="city" value="{{data.city}}" readonly>
+  </div>
+ <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Contact</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{data.contact}}" name="contact" readonly>
+  </div>
+        </div>
+        <div class="form-row">
+    <div class="form-group col-md-12">
+    <label for="exampleInputPassword1">Address</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" name="add" value="{{data.address}}" readonly>
+  </div>
+        </div>
+   <div class="form-row">
+    <div class="form-group col-md-12">
+    <label for="exampleInputPassword1">Total</label>
+    <input type="number" class="form-control" id="exampleInputPassword1" value="{{total}}" name="total" readonly>
+  </div>
+    </div>
+ <button style="margin-bottom:5%" type="submit" class="btn btn-primary">confirm</button>
+</form>
+</div>
+</div>
+{% if error %}
+<script>
+    alert('Regitered Successfully');
+    window.location = "{% url 'login' %}";
+</script>
+{% endif %}
+{% endblock %}
+// ADMIN HOME PAGE
+{% extends 'navigation.html' %}
+{% load static %}
+{% block body %}
+<style>
+.glow {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+/* Rounded border */
+hr.rounded {
+  border-top: 8px solid lightblue;
+  border-radius: 5px;
+}
+.prjdiv:hover{
+box-shadow:0 0 20px 0 rgba(0,0,0,0.3);
+transform:translateY(-20px)
+}
+</style>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<br>
+<center>
+<div class="container" style="margin-top:10%;height:150px;width:80%">
+    <div class="row" style="height:90%">
+        <div class="col-md-4 prjdiv">
+            <a href="{% url 'view_user' %}"><h1>Total Customer</h1>
+            <h2 style="color:blue">{{total_customer}}</h2>
+			<hr class="rounded"></a>
+        </div>
+        <div class="col-md-4 prjdiv">
+           <a href="{% url 'admin_viewBooking' %}"><h1>Total Booking</h1>
+            <h2 style="color:blue">{{total_book}}</h2>
+			<hr class="rounded"></a>
+        </div>
+        <div class="col-md-4 prjdiv">
+		<a href="{% url 'admin_view_product' %}">
+            <h1>Total Product</h1>
+            <h2 style="color:blue">{{total_pro}}</h2>
+			<hr class="rounded"></a>
+        </div>
+    </div>
+</div>
+    </center>
+          <footer class="site-footer">
+      <div class="container">
+       <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p style = "font-size : 30pt ; color : #FF0000 ; font-weight : bold">
+             Copyright &copy;<script>document.write(new Date().getFullYear());</script> All Rights Reserved <span style = "color : brown">|</span> <span style = "color : #006400">This website is made with <i class="fas fa-heart icon-heart text-warning" aria-hidden="true"></i> by </span><a class= "glow" href="#" target="_blank" >Pankaj Panjwani</a>
+           </p>
+          </div>
+          
+        </div>
+      </div>
+    </footer>
+{% endblock %}
+// ADD PRODUCT
+{% extends 'navigation.html' %}
+{% block body %}
+{% load static %}
+<div class="container">
+    <h2 style="margin-top:20px" align="center">Add Product</h2><hr>
+<div class="container-fluid" style="width:70%;margin-top:10%">
+<form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Product Name</label>
+      <input type="text" class="form-control" placeholder="Enter Product Name" name="pname" id="inputEmail4">
+    </div>
+    <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Product Image</label>
+    <input type="file" class="form-control" id="exampleInputPassword1" name="img" value="choose file">
+</div></div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+      <label for="inputState">Category</label>
+      <select id="inputState" class="form-control" name="cat">
+          {% for i in cat %}
+        <option value="{{i.name}}">{{i.name}}</option>
+          {% endfor %}
+      </select>
+    </div>
+     <div class="form-group col-md-6">
+      <label for="inputEmail4">Product Price</label>
+      <input type="number" class="form-control" name="price" placeholder="Enter Price" id="inputEmail4">
+    </div></div>
+    <div class="form-group">
+    <label for="exampleFormControlTextarea1">Description</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" name="desc" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+</div>
+{% if error %}
+<script>
+  alert('1 Product Added Successfully');
+</script>
+{% endif %}
+{% endblock %}
+// VIEW PRODUCT CATEGORIES
+{% extends 'navigation.html' %}
+{% block body %}
+<center><h2 style="color:red;margin-top:2%">View Category</h2></center><hr>
+<div class="container" style="margin-top:5%">
+<table class="table table-bordered" id="myTable">
+  <thead>
+  <tr>
+    <th>Product Name</th>
+    <th>Delete</th>
+  </tr>
+  </thead>
+   <tbody>
+   {% for i in pro %}
+ <tr>
+    <td>{{i.name}}</td>
+    <td><a href="{% url 'delete_category' i.id %}" onclick="return confirm('Are you sure?')"><button class="button button1">delete</button></a></td>
+  </tr>
+    {% endfor %}
+    </tbody>
+{{count}}
+</table>
+ </div>
+<script>
+            var el_up = document.getElementById("GFG_UP");
+            el_up.innerHTML =
+                "Click on the LINK for further confirmation.";
+        </script>
+{% if error %}
+<script>
+    alert('1 Product Deleted Successfully');
+    window.location("{% url 'view_feedback' %}");
+</script>
+{% endif %}
+{% endblock %} 
+//CHANGE PASSWORD
+{% extends 'navigation.html' %}
+{% block body %}
+{% load static %}
+<div class="container">
+    <h2 style="margin-top:20px" align="center">Change Password</h2><hr>
+<div class="container-fluid" style="width:70%;margin-top:10%">
+<form method="post" action="">
+    {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Old Password</label>
+    <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="pwd3">
+  </div>
+   <div class="form-group">
+    <label for="exampleInputEmail1">New Password</label>
+    <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="pwd1">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Confirm Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1"  name="pwd2">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+</div>
+{% ifequal error "yes" %}
+<script>
+    alert('Password Changed.....');
+    window.location=('{% url 'logout' %}')
+</script>
+{% endifequal %}
+{% ifequal error "not" %}
+<script>
+    alert('New Password and Confirm Password are not match');
+</script>
+{% endifequal %}
+{% endblock %}	
+//CONFIRM BOOKING 
+{% extends 'navigation.html' %}
+{% block body %}
+{% load static %}
+<div class="container">
+    <h2 style="margin-top:20px" align="center">Confirm Booking Detail</h2><hr>
+<div class="container-fluid" style="width:70%;margin-top:5%">
+<form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Booking Id</label>
+      <input type="text" class="form-control" name="book_id" value="{{book_id}}" id="inputEmail4" readonly>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Customer Name</label>
+      <input type="text" class="form-control" name="name" value="{{request.user.username}}" id="inputPassword4" readonly>
+    </div>
+  </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+      <label for="inputEmail4">Booking Date</label>
+      <input type="text" class="form-control" name="date1" value="{{date1}}" id="inputEmail4" readonly>
+    </div>
+<div class="form-group col-md-6">
+      <label for="inputPassword4">Email</label>
+      <input type="email" class="form-control" name="email" value="{{request.user.email}}" id="inputPassword4" readonly>
+    </div>
+  </div>
+        <div class="form-row">
+<div class="form-group col-md-6">
+    <label for="exampleInputEmail1">City</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="city" value="{{data.city}}" readonly>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Contact</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{data.contact}}" name="contact" readonly>
+  </div>
+        </div>
+        <div class="form-row">
+    <div class="form-group col-md-12">
+    <label for="exampleInputPassword1">Address</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" name="add" value="{{data.address}}" readonly>
+  </div>
+        </div>
+    <div class="form-row">
+    <div class="form-group col-md-12">
+    <label for="exampleInputPassword1">Total</label>
+    <input type="number" class="form-control" id="exampleInputPassword1" value="{{total}}" name="total" readonly>
+  </div>
+    </div>
+  <button style="margin-bottom:5%" type="submit" class="btn btn-primary">confirm</button>
+</form>
+</div>
+</div>
+{% if error %}
+<script>
+    alert('Regitered Successfully');
+    window.location = "{% url 'login' %}";
+</script>
+{% endif %}
+{% endblock %}
+FRAMEWORK CODE
+//framework
+from django.db import models
+from django.contrib.auth.models import User
+# Create your models here.
+class Category(models.Model):
+    name = models.CharField(max_length=30, null=True)
+      def __str__(self):
+        return self.name
+class Product(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+    image = models.FileField(null=True)
+    name = models.CharField(max_length=30, null=True)
+    price = models.IntegerField(null=True)
+    desc = models.TextField(null=True)
+    def __str__(self):
+        return self.category.name+"--"+self.name
+class Status(models.Model):
+    name = models.CharField(max_length=20, null=True)
+    def __str__(self):
+        return self.name
+class Profile(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    dob = models.DateField(null=True)
+    city = models.CharField(max_length=30, null=True)
+    address = models.CharField(max_length=50, null=True)
+    contact = models.CharField(max_length=10, null=True)
+    image = models.FileField(null=True)
+    def __str__(self):
+        return self.user.username
+class Cart(models.Model):
+    profile = models.ForeignKey(Profile,on_delete=models.CASCADE,null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
+    def __str__(self):
+        return self.profile.user.username + " . " + self.product.name
+class Booking(models.Model):
+    status = models.ForeignKey(Status, on_delete=models.CASCADE, null=True)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    booking_id = models.CharField(max_length=200,null=True)
+    quantity = models.CharField(max_length=100,null=True)
+    book_date = models.CharField(max_length=30, null=True)
+    total = models.IntegerField(null=True)
+    def __str__(self):
+        return self.book_date+" "+self.profile.user.username
+class Send_Feedback(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    message1 = models.TextField(null=True)
+    date = models.CharField(max_length=30, null=True)
+    def __str__(self):
+        return self.profile.user.username
+//apps.py
+from django.apps import AppConfig
+class GroceryConfig(AppConfig):
+    name = 'grocery'
+//admin.py 
+from django.contrib import admin
+from .models import *
+# Register your models here.
+admin.site.register(Category)
+admin.site.register(Product)
+admin.site.register(Booking)
+admin.site.register(Profile)
+admin.site.register(Send_Feedback)
+admin.site.register(Status)
+admin.site.register(Cart)
